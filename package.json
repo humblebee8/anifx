@@ -1,6 +1,6 @@
 {
   "name": "p13rnd-anifx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "library to animate anything you possibly can using web animations api with some extended functionality.",
   "main": "index.js",
   "scripts": {
