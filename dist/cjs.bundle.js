@@ -11,10 +11,10 @@ class Fx {
 	clean = true;
 	currentLineLen = 0;
 	retain = true;
-	randomColor = (() => {
+	randomColor = () => {
 		return "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
-	});
-	getAnimations = ((str) => {
+	}
+	getAnimations = function(str) {
 		return str
 			.split('|')
 			.map(keyVal => {
@@ -33,8 +33,8 @@ class Fx {
 				}, 
 			{}
 		);
-	});
-	cleanUp = ((node) => {
+	}
+	cleanUp = function(node) {
 		if ('false' !== this.retain) {
 			// get values to retain
 			let retainerObj = {};
@@ -68,8 +68,8 @@ class Fx {
 			}
 		});
 		node.innerHTML = text.trim();
-	});
-	animateNode = ((node, options) => {
+	}
+	animateNode = function(node, options) {
 		if (options.timing.iterations < 1) {
 			options.timing.iterations = Infinity;
 		}
@@ -87,20 +87,20 @@ class Fx {
 		} else {
 			this.runFullAnimations(node);
 		}
-	});
-	lastElementCb = ((node, current, last) => {
+	}
+	lastElementCb = function(node, current, last) {
 		if (current === last - 1) {
 			this.cleanUp(node);
 			node.isAnimating = false;
 		}
-	});
-	runFullAnimations = ((xEl) => {
+	}
+	runFullAnimations = function(xEl) {
 		const anim = xEl.animate(this.animations, this.timing);
 		anim.onfinish = ((e) => {
 			xEl.isAnimating = false;
 		});
-	});
-	runSplitAnimations = ((xEl) => {
+	}
+	runSplitAnimations = function(xEl) {
 		let anim, currentAnchor = 0;
 		const ANCHORS = xEl.querySelectorAll('a');
 		if (null !== ANCHORS && ANCHORS.length > 0) {
@@ -240,8 +240,8 @@ class Fx {
 				}
 			}
 		});
-	});
-	shadowCalc = ((xEl, el) => {
+	}
+	shadowCalc = (xEl, el) => {
 		// append el invisible, measure it's width and remove it right away
 		el.style.visibility = 'hidden';
 		xEl.append(el);
@@ -249,7 +249,7 @@ class Fx {
 		xEl.removeChild(el);
 		
 		return w;
-	});
+	}
 }
 
 exports.Fx = Fx;
