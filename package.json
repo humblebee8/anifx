@@ -1,0 +1,30 @@
+{
+  "name": "p13rnd-anifx",
+  "version": "1.0.0",
+  "description": "library to animate anything you possibly can using web animations api with some extended functionality.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "rollup -c -w",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p13rnd/anifx.git"
+  },
+  "keywords": [
+    "web",
+    "animation",
+    "api"
+  ],
+  "author": "pi <p13rnd@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/p13rnd/anifx/issues"
+  },
+  "homepage": "https://github.com/p13rnd/anifx#readme",
+  "devDependencies": {
+    "rollup": "^2.61.1",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
