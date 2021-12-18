@@ -1,12 +1,18 @@
 class Fx {
-	animations;
+	animations = 'color: [randomColor, randomColor]';
 	node;
-	timing;
+	timing = {
+    duration: 1500,
+    easing: 'linear',
+    fill: 'none',
+    direction: 'normal',
+    iterations: 1
+  };
 	delay = 0;
 	delayBetweenLetters = 0;
 	clean = true;
+	retain = false;
 	currentLineLen = 0;
-	retain = true;
 	randomColor = () => {
 		return "#xxxxxx".replace(/x/g, y=>(Math.random()*16|0).toString(16));
 	}
@@ -66,16 +72,16 @@ class Fx {
 		node.innerHTML = text.trim();
 	}
 	animateNode = function(node, options) {
-		if (options.timing.iterations < 1) {
+		if (options.timing?.iterations < 1) {
 			options.timing.iterations = Infinity;
 		}
 
 		this.node = node;
-		this.delayBetweenLetters = options.delayBetweenLetters;
-		this.timing = options.timing;
-		this.delay = options.timing.delay;
-		this.clean = options.clean;
-		this.retain = options.retain;
+		this.delayBetweenLetters = options.delayBetweenLetters || this.delayBetweenLetters;
+		this.timing = options.timing || this.timing;
+		this.delay = options.timing.delay || this.delay;
+		this.clean = options.clean || this.clean;
+		this.retain = options.retain || this.retain;
 		this.animations = this.getAnimations(options.animationString);
 		
 		if (true === options.split) {
